@@ -3,14 +3,10 @@ import {
   Equals,
   IsNumber,
   IsObject,
-  IsRFC3339,
   IsString,
   ValidateNested,
 } from 'class-validator';
-
-export type KeyValue = {
-  [key: string]: string;
-};
+import { KeyValue, WebhookAlert } from './webhook.alert.dto';
 
 export class WebhookDto {
   @Equals('4')
@@ -43,27 +39,4 @@ export class WebhookDto {
   @ValidateNested({ each: true })
   @Type(() => WebhookAlert)
   alerts!: WebhookAlert[];
-}
-
-export class WebhookAlert {
-  @IsString()
-  status!: 'resolved' | 'firing' | string;
-
-  @IsObject()
-  labels!: KeyValue;
-
-  @IsObject()
-  annotations!: KeyValue;
-
-  @IsRFC3339()
-  startsAt!: Date;
-
-  @IsRFC3339()
-  endsAt!: Date;
-
-  @IsString()
-  generatorURL!: string;
-
-  @IsString()
-  fingerprint!: string;
 }

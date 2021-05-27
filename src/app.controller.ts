@@ -17,7 +17,6 @@ export class AppController {
       formatted_body: 'This is a <strong>test</strong>',
     };
     const res = await this.matrixService.sendMessage(roomId, message);
-    console.log(res.event_id);
 
     message.body = 'Test1 - Done';
     message.formatted_body = '<del>Test1</del> - Done';

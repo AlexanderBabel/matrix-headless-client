@@ -8,7 +8,7 @@ import {
   EventContentTypeMessage,
 } from 'matrix-js-sdk';
 import olm from 'olm';
-import { join, resolve } from 'path';
+import path from 'path';
 import { LocalStorage } from 'node-localstorage';
 
 // @ts-ignore
@@ -17,8 +17,8 @@ import { LocalStorageCryptoStore } from 'matrix-js-sdk/lib/crypto/store/localSto
 import { WebStorageSessionStore } from 'matrix-js-sdk/lib/store/session/webstorage';
 // @ts-ignore
 import { MemoryStore } from 'matrix-js-sdk/lib/store/memory';
-import { MatrixModuleOptions } from './matrix.module.options';
 import { WINSTON_MODULE_PROVIDER } from 'nest-winston';
+import { MatrixModuleOptions } from './matrix.module.options';
 
 global.Olm = olm;
 
@@ -33,19 +33,19 @@ export type MessageContent = {
 export class MatrixService {
   private readonly MATRIX_HOMESERVER = this.configService.get<string>(
     `${this.options.envPrefix}MATRIX_HOMESERVER`,
-  )!;
+  );
 
   private readonly MATRIX_ACCESS_TOKEN = this.configService.get<string>(
     `${this.options.envPrefix}MATRIX_ACCESS_TOKEN`,
-  )!;
+  );
 
   private readonly MATRIX_USER = this.configService.get<string>(
     `${this.options.envPrefix}MATRIX_USER`,
-  )!;
+  );
 
   private readonly MATRIX_DEVICE_ID = this.configService.get<string>(
     `${this.options.envPrefix}MATRIX_DEVICE_ID`,
-  )!;
+  );
 
   private readonly client: MatrixClient | undefined;
 
@@ -68,8 +68,8 @@ export class MatrixService {
       return;
     }
 
-    const localStoragePath = resolve(
-      join(
+    const localStoragePath = path.resolve(
+      path.join(
         __dirname,
         `${this.MATRIX_USER.replace('@', '').replace(':', '')}-${
           this.MATRIX_DEVICE_ID
@@ -90,8 +90,6 @@ export class MatrixService {
       deviceId: this.MATRIX_DEVICE_ID,
     });
 
-    console.log(`CLIENT - ${this.MATRIX_USER}`);
-
     this.startClient();
   }
 
@@ -100,9 +98,9 @@ export class MatrixService {
     content: MessageContent,
   ): Promise<MessageResponse> {
     await this.joinRoom(roomId);
-    return new Promise((res) => {
-      this.client?.sendMessage(roomId, content, undefined, (_err, data) =>
-        res(data),
+    return new Promise((resolve) => {
+      this.client?.sendMessage(roomId, content, undefined, (_error, data) =>
+        resolve(data),
       );
     });
   }
@@ -113,7 +111,7 @@ export class MatrixService {
     content: MessageContent,
   ) {
     await this.joinRoom(roomId);
-    return new Promise((res) => {
+    return new Promise((resolve) => {
       this.client?.sendEvent(
         roomId,
         'm.room.message',
@@ -126,7 +124,7 @@ export class MatrixService {
           },
         },
         undefined,
-        (_err, data) => res(data),
+        (_error, data) => resolve(data),
       );
     });
   }
@@ -135,12 +133,11 @@ export class MatrixService {
     if (!this.joinedRoomsCache.includes(roomId)) {
       try {
         const room = await this.client?.joinRoom(roomId);
-        console.log(room);
         if (room) {
           this.joinedRoomsCache.push(roomId);
         }
-      } catch (err) {
-        console.warn(`Could not join room ${roomId} - ${err}`);
+      } catch (error) {
+        this.logger.warn(`Could not join room ${roomId} - ${error}`);
       }
     }
   }
@@ -150,10 +147,10 @@ export class MatrixService {
     await this.client?.startClient();
   }
 
-  private async startVerification() {
-    const rooms = await this.client?.getRooms();
-    // rooms?.map(r => r.getJoinedMembers().map(m => m.get))
-    // this.client?.getDevices();
-    // this.client?.requestVerification();
-  }
+  // private async startVerification() {
+  //   const rooms = await this.client?.getRooms();
+  //   // rooms?.map(r => r.getJoinedMembers().map(m => m.get))
+  //   // this.client?.getDevices();
+  //   // this.client?.requestVerification();
+  // }
 }

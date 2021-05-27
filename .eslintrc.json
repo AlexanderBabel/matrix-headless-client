@@ -34,6 +34,7 @@
     "class-methods-use-this": "off",
     "unicorn/no-useless-undefined": "off",
     "no-underscore-dangle": ["error", { "allow": ["_id"] }],
-    "unicorn/no-null": "off"
+    "unicorn/no-null": "off",
+    "@typescript-eslint/ban-ts-comment": "off"
   }
 }

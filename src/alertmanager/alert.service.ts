@@ -1,13 +1,14 @@
 import { Inject, Injectable, Logger } from '@nestjs/common';
-import { WebhookAlert } from './webhook.dto';
 import { WINSTON_MODULE_PROVIDER } from 'nest-winston';
 import { ConfigService } from '@nestjs/config';
+import { WebhookAlert } from './dtos/webhook.alert.dto';
 
 @Injectable()
 export class AlertService {
   private ALERTMANAGER_MENTION_ROOM = this.configService.get<boolean>(
     'ALERTMANAGER_MENTION_ROOM',
   );
+
   private ALERTMANAGER_MATRIX_ROOMS = this.configService.get<string>(
     'ALERTMANAGER_MATRIX_ROOMS',
   );
@@ -43,7 +44,7 @@ export class AlertService {
       }
 
       default: {
-        parts.push(data.status.toUpperCase() + ':');
+        parts.push(`${data.status.toUpperCase()}:`);
         break;
       }
     }
@@ -83,14 +84,14 @@ export class AlertService {
 
   public getRoom(receiver: string): string | undefined {
     if (!this.ALERTMANAGER_MATRIX_ROOMS) {
-      return;
+      return undefined;
     }
 
     const room = this.ALERTMANAGER_MATRIX_ROOMS.split('|').find((r) =>
       r.startsWith(`${receiver}/`),
     );
     if (!room) {
-      return;
+      return undefined;
     }
 
     return room.split('/')[1];

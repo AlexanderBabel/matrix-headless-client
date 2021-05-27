@@ -18,7 +18,7 @@ import {
 } from 'src/matrix/matrix.service';
 import striptags from 'striptags';
 import { AlertService } from './alert.service';
-import { WebhookDto } from './webhook.dto';
+import { WebhookDto } from './dtos/webhook.dto';
 
 const ALERTMANAGER_CACHE_PREFIX = 'am-event-id-';
 

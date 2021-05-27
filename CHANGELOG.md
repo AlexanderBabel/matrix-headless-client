@@ -1,3 +1,10 @@
+## [1.0.1](https://github.com/AlexanderBabel/matrix-headless-client/compare/v1.0.0...v1.0.1) (2021-05-27)
+
+
+### Bug Fixes
+
+* change default port ([c038eb4](https://github.com/AlexanderBabel/matrix-headless-client/commit/c038eb48f016eb2faa40b3231b2fb5359677b079))
+
 # 1.0.0 (2021-05-27)
 
 

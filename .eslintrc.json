@@ -1,0 +1,39 @@
+{
+  "env": {
+    "node": true,
+    "jest": true
+  },
+  "parser": "@typescript-eslint/parser",
+  "parserOptions": {
+    "sourceType": "module",
+    "ecmaVersion": 2020,
+    "project": "./tsconfig.json"
+  },
+  "plugins": ["@typescript-eslint", "prettier", "jest", "promise", "unicorn"],
+  "extends": [
+    "airbnb-typescript/base",
+    "plugin:@typescript-eslint/eslint-recommended",
+    "plugin:@typescript-eslint/recommended",
+    "plugin:jest/recommended",
+    "plugin:promise/recommended",
+    "plugin:unicorn/recommended",
+    "prettier"
+  ],
+  "root": true,
+  "rules": {
+    "unicorn/prevent-abbreviations": "off",
+    "linebreak-style": ["error", "unix"],
+    "no-console": "error",
+    "no-empty": ["error", { "allowEmptyCatch": true }],
+    "unicorn/filename-case": "off",
+    "@typescript-eslint/interface-name-prefix": "off",
+    "@typescript-eslint/explicit-function-return-type": "off",
+    "@typescript-eslint/explicit-module-boundary-types": "off",
+    "@typescript-eslint/no-unused-vars": "error",
+    "import/prefer-default-export": "off",
+    "class-methods-use-this": "off",
+    "unicorn/no-useless-undefined": "off",
+    "no-underscore-dangle": ["error", { "allow": ["_id"] }],
+    "unicorn/no-null": "off"
+  }
+}

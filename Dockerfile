@@ -38,4 +38,6 @@ COPY --from=builder /usr/src/app/. .
 #COPY ./public /app/public
 
 ENTRYPOINT [ "node" ]
+CMD [ "dist/main.js" ]
+
 EXPOSE 5000

@@ -1,3 +1,10 @@
+## [1.0.2](https://github.com/AlexanderBabel/matrix-headless-client/compare/v1.0.1...v1.0.2) (2021-05-28)
+
+
+### Bug Fixes
+
+* **Dockerfile:** add CMD ([4bb18f3](https://github.com/AlexanderBabel/matrix-headless-client/commit/4bb18f3c8b23056f48cedfb37d244639d406b3fa))
+
 ## [1.0.1](https://github.com/AlexanderBabel/matrix-headless-client/compare/v1.0.0...v1.0.1) (2021-05-27)
 
 

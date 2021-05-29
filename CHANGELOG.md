@@ -1,3 +1,10 @@
+# [1.1.0](https://github.com/AlexanderBabel/matrix-headless-client/compare/v1.0.2...v1.1.0) (2021-05-29)
+
+
+### Features
+
+* **MatrixService:** add support for reaction edits ([cce0024](https://github.com/AlexanderBabel/matrix-headless-client/commit/cce002452b97ba4539928fd08863011fa63cb34c))
+
 ## [1.0.2](https://github.com/AlexanderBabel/matrix-headless-client/compare/v1.0.1...v1.0.2) (2021-05-28)
 
 

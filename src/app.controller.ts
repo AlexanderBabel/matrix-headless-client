@@ -1,8 +1,5 @@
 import { Controller, Param, Post } from '@nestjs/common';
-import {
-  MatrixService,
-  MessageContent,
-} from './matrix/matrix.service';
+import { MatrixService, MessageContent } from './matrix/matrix.service';
 
 @Controller()
 export class AppController {

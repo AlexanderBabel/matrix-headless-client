@@ -6,6 +6,7 @@ import {
   // @ts-ignore
   setCryptoStoreFactory,
   EventContentTypeMessage,
+  MatrixEvent,
 } from 'matrix-js-sdk';
 import olm from 'olm';
 import path from 'path';
@@ -46,6 +47,15 @@ export class MatrixService {
   private readonly MATRIX_DEVICE_ID = this.configService.get<string>(
     `${this.options.envPrefix}MATRIX_DEVICE_ID`,
   );
+
+  private readonly MATRIX_REACTION_EDIT_ROOMS = this.configService.get<string>(
+    `${this.options.envPrefix}MATRIX_REACTION_EDIT_ROOMS`,
+  );
+
+  private readonly MATRIX_REACTION_EDIT_POSTFIX =
+    this.configService.get<string>(
+      `${this.options.envPrefix}MATRIX_REACTION_EDIT_POSTFIX`,
+    );
 
   private readonly client: MatrixClient | undefined;
 
@@ -91,6 +101,7 @@ export class MatrixService {
     });
 
     this.startClient();
+    this.enableReactionEdits();
   }
 
   public async sendMessage(
@@ -145,6 +156,63 @@ export class MatrixService {
   private async startClient() {
     await this.client?.initCrypto();
     await this.client?.startClient();
+  }
+
+  private enableReactionEdits() {
+    if (
+      !this.MATRIX_REACTION_EDIT_ROOMS ||
+      !this.MATRIX_REACTION_EDIT_POSTFIX
+    ) {
+      return;
+    }
+
+    const postfix = this.MATRIX_REACTION_EDIT_POSTFIX;
+    this.MATRIX_REACTION_EDIT_ROOMS?.split(',').forEach((roomId) => {
+      this.client?.on('Room.timeline', async (event: MatrixEvent) => {
+        if (
+          event.getRoomId() !== roomId ||
+          event.getType() !== 'm.reaction' ||
+          !event.getRelation()
+        ) {
+          return;
+        }
+
+        const { event_id: eventId, key: emoji } =
+          event.getRelation() as unknown as {
+            event_id: string;
+            key: string;
+          };
+        if (!eventId || emoji !== '✅') {
+          return;
+        }
+
+        const message = (await this.client?.fetchRoomEvent(
+          event.getRoomId(),
+          eventId,
+        )) as { content: MessageContent } | undefined;
+        if (!message) {
+          return;
+        }
+
+        if (
+          message.content.formatted_body?.includes('<del>') ||
+          message.content.body.includes(postfix)
+        ) {
+          return;
+        }
+
+        const content: MessageContent = {
+          msgtype: message.content.msgtype,
+          body: `${message.content.body}${postfix}`,
+          formatted_body: `<del>${
+            message.content.formatted_body ?? message.content.body
+          }</del>${postfix}`,
+          format: 'org.matrix.custom.html',
+        };
+
+        await this.editMessage(event.getRoomId(), eventId, content);
+      });
+    });
   }
 
   // private async startVerification() {

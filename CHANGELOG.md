@@ -1,3 +1,10 @@
+## [1.2.1](https://github.com/AlexanderBabel/matrix-headless-client/compare/v1.2.0...v1.2.1) (2021-06-01)
+
+
+### Bug Fixes
+
+* **ha:** edit chore message only once ([e5b67a2](https://github.com/AlexanderBabel/matrix-headless-client/commit/e5b67a22adaed20f0d89738e3cdb68ab8ca75f4b))
+
 # [1.2.0](https://github.com/AlexanderBabel/matrix-headless-client/compare/v1.1.0...v1.2.0) (2021-06-01)
 
 

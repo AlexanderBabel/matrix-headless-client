@@ -140,6 +140,21 @@ export class MatrixService {
     });
   }
 
+  public async searchText(roomId: string, query: string, limit = 100) {
+    const room = await this.client?.getRoom(roomId);
+    if (!room) {
+      return [];
+    }
+
+    return (
+      (await this.client?.scrollback(room, limit))?.timeline.filter(
+        (e) =>
+          e.getType() === 'm.room.message' &&
+          e.getContent().body.includes(query),
+      ) ?? []
+    );
+  }
+
   private async joinRoom(roomId: string) {
     if (!this.joinedRoomsCache.includes(roomId)) {
       try {
@@ -154,7 +169,7 @@ export class MatrixService {
   }
 
   private async startClient() {
-    await this.client?.initCrypto();
+    // await this.client?.initCrypto();
     await this.client?.startClient();
   }
 
@@ -167,7 +182,7 @@ export class MatrixService {
     }
 
     const postfix = this.MATRIX_REACTION_EDIT_POSTFIX;
-    this.MATRIX_REACTION_EDIT_ROOMS?.split(',').forEach((roomId) => {
+    this.MATRIX_REACTION_EDIT_ROOMS?.split(',').map((roomId) => {
       this.client?.on('Room.timeline', async (event: MatrixEvent) => {
         if (
           event.getRoomId() !== roomId ||
@@ -212,6 +227,8 @@ export class MatrixService {
 
         await this.editMessage(event.getRoomId(), eventId, content);
       });
+
+      return true;
     });
   }
 

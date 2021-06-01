@@ -4,9 +4,9 @@ import { WinstonModule } from 'nest-winston';
 import winston from 'winston';
 import { AlertManagerModule } from './alertmanager/alertmanager.module';
 import { AppController } from './app.controller';
-import { MatrixModule } from './matrix/matrix.module';
 import { config } from './config';
 import { HealthCheckModule } from './health-check/health-check.module';
+import { HomeAssistantModule } from './home-assistant/home-assistant.module';
 
 @Module({
   imports: [
@@ -21,7 +21,7 @@ import { HealthCheckModule } from './health-check/health-check.module';
     }),
     HealthCheckModule,
     AlertManagerModule,
-    MatrixModule.register({}),
+    HomeAssistantModule,
   ],
   controllers: [AppController],
 })

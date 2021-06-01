@@ -1,3 +1,10 @@
+# [1.2.0](https://github.com/AlexanderBabel/matrix-headless-client/compare/v1.1.0...v1.2.0) (2021-06-01)
+
+
+### Features
+
+* add home-assistant controller ([fe515f7](https://github.com/AlexanderBabel/matrix-headless-client/commit/fe515f732af2b8a51798d1f5089b9fe2efa57395))
+
 # [1.1.0](https://github.com/AlexanderBabel/matrix-headless-client/compare/v1.0.2...v1.1.0) (2021-05-29)
 
 

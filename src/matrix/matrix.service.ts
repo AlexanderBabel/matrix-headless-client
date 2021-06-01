@@ -30,6 +30,14 @@ export type MessageContent = {
   formatted_body?: string;
 } & EventContentTypeMessage;
 
+export type ReplaceEvent = {
+  'm.new_content'?: MessageContent;
+  'm.relates_to'?: {
+    rel_type: 'm.replace';
+    event_id: string;
+  };
+} & MessageContent;
+
 @Injectable()
 export class MatrixService {
   private readonly MATRIX_HOMESERVER = this.configService.get<string>(
@@ -140,17 +148,45 @@ export class MatrixService {
     });
   }
 
-  public async searchText(roomId: string, query: string, limit = 100) {
+  public async searchText(
+    roomId: string,
+    query: string,
+    ignoreMessagesWithReplacements = false,
+    limit = 100,
+  ) {
     const room = await this.client?.getRoom(roomId);
     if (!room) {
       return [];
     }
 
+    const events = (await this.client?.scrollback(room, limit))?.timeline;
+    const replacementEvents = ignoreMessagesWithReplacements
+      ? events?.filter((e) => {
+          const relTo = (e.getContent() as ReplaceEvent)['m.relates_to'];
+          if (!relTo) {
+            return false;
+          }
+
+          return relTo.rel_type === 'm.replace';
+        })
+      : [];
+
+    const ignoredEventIds = ignoreMessagesWithReplacements
+      ? ([
+          ...(replacementEvents?.map(
+            (e) => (e.getContent() as ReplaceEvent)['m.relates_to']?.event_id,
+          ) ?? []),
+          ...(replacementEvents?.map((e) => e.getId()) ?? []),
+        ] as string[])
+      : [];
+
     return (
-      (await this.client?.scrollback(room, limit))?.timeline.filter(
+      events?.filter(
         (e) =>
           e.getType() === 'm.room.message' &&
-          e.getContent().body.includes(query),
+          e.getContent().body.includes(query) &&
+          (!ignoreMessagesWithReplacements ||
+            !ignoredEventIds.includes(e.getId())),
       ) ?? []
     );
   }

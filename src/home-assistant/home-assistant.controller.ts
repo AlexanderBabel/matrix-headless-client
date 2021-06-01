@@ -72,6 +72,7 @@ export class HomeAssistantController {
     const events = await this.matrixService.searchText(
       data.roomId,
       `${this.VARS.chore.searchPrefix}${data.choreId}`,
+      true,
     );
 
     const res = await Promise.all(
@@ -81,13 +82,16 @@ export class HomeAssistantController {
           return false;
         }
 
+        const shortBody = content.body.split('\n')[0];
+        const shortFormattedBody = (content.formatted_body ?? content.body)
+          .split('<br>')[0]
+          .replace('<p>', '');
+
         const message: MessageContent = {
           msgtype: 'm.text',
-          body: content.body,
+          body: `${shortBody}${this.VARS.chore.completedPostfix}`,
           format: 'org.matrix.custom.html',
-          formatted_body: `<del>${this.converter.makeHtml(content.body)}</del>${
-            this.VARS.chore.completedPostfix
-          }`,
+          formatted_body: `<del>${shortFormattedBody}</del>${this.VARS.chore.completedPostfix}`,
         };
 
         await this.matrixService.editMessage(e.getRoomId(), e.getId(), message);

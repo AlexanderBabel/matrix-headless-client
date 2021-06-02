@@ -10,7 +10,7 @@ import {
 } from '@nestjs/common';
 import { ConfigService } from '@nestjs/config';
 import { WINSTON_MODULE_PROVIDER } from 'nest-winston';
-import showdown from 'showdown';
+
 import { MatrixService, MessageContent } from 'src/matrix/matrix.service';
 import { ChoreCompleteDto } from './dtos/chore.complete.dto';
 import { NotificationDto } from './dtos/notification.dto';
@@ -32,8 +32,6 @@ export class HomeAssistantController {
     },
   };
 
-  private converter = new showdown.Converter();
-
   constructor(
     @Inject(WINSTON_MODULE_PROVIDER) private readonly logger: Logger,
     private configService: ConfigService,
@@ -49,14 +47,7 @@ export class HomeAssistantController {
       throw new UnauthorizedException();
     }
 
-    const message: MessageContent = {
-      msgtype: 'm.text',
-      body: data.message,
-      format: 'org.matrix.custom.html',
-      formatted_body: this.converter.makeHtml(data.message),
-    };
-    await this.matrixService.sendMessage(data.roomId, message);
-
+    await this.matrixService.sendMessage(data.roomId, data.message);
     return { success: true };
   }
 
@@ -83,33 +74,22 @@ export class HomeAssistantController {
         }
 
         const shortBody = content.body.split('\n')[0];
-        const shortFormattedBody = (content.formatted_body ?? content.body)
-          .split('<br>')[0]
-          .replace('<p>', '');
-
-        const message: MessageContent = {
-          msgtype: 'm.text',
-          body: `${shortBody}${this.VARS.chore.completedPostfix}`,
-          format: 'org.matrix.custom.html',
-          formatted_body: `<del>${shortFormattedBody}</del>${this.VARS.chore.completedPostfix}`,
-        };
-
-        await this.matrixService.editMessage(e.getRoomId(), e.getId(), message);
+        await this.matrixService.editMessage(
+          e.getRoomId(),
+          e.getId(),
+          `${shortBody}${this.VARS.chore.completedPostfix}`,
+          `<del>${shortBody}</del>${this.VARS.chore.completedPostfix}`,
+        );
         return true;
       }),
     );
 
     const messageUpdateHappened = res.find((e) => e);
     if (!messageUpdateHappened && this.VARS.chore.completedFallbackMessage) {
-      const message: MessageContent = {
-        msgtype: 'm.text',
-        body: this.VARS.chore.completedFallbackMessage,
-        format: 'org.matrix.custom.html',
-        formatted_body: this.converter.makeHtml(
-          this.VARS.chore.completedFallbackMessage,
-        ),
-      };
-      await this.matrixService.sendMessage(data.roomId, message);
+      await this.matrixService.sendMessage(
+        data.roomId,
+        this.VARS.chore.completedFallbackMessage,
+      );
     }
 
     return { success: true };

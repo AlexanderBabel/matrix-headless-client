@@ -11,6 +11,7 @@ import {
 import olm from 'olm';
 import path from 'path';
 import { LocalStorage } from 'node-localstorage';
+import showdown from 'showdown';
 
 // @ts-ignore
 import { LocalStorageCryptoStore } from 'matrix-js-sdk/lib/crypto/store/localStorage-crypto-store';
@@ -69,6 +70,8 @@ export class MatrixService {
 
   private readonly joinedRoomsCache: string[] = [];
 
+  private converter = new showdown.Converter();
+
   constructor(
     @Inject(WINSTON_MODULE_PROVIDER) private readonly logger: Logger,
     @Inject('CONFIG_OPTIONS') private options: MatrixModuleOptions,
@@ -112,7 +115,16 @@ export class MatrixService {
     this.enableReactionEdits();
   }
 
-  public async sendMessage(
+  public sendMessage(roomId: string, message: string, htmlMessage?: string) {
+    return this.sendMessageContent(roomId, {
+      msgtype: 'm.text',
+      body: message,
+      format: 'org.matrix.custom.html',
+      formatted_body: this.converter.makeHtml(htmlMessage ?? message),
+    });
+  }
+
+  public async sendMessageContent(
     roomId: string,
     content: MessageContent,
   ): Promise<MessageResponse> {
@@ -124,11 +136,25 @@ export class MatrixService {
     });
   }
 
-  public async editMessage(
+  public editMessage(
+    roomId: string,
+    eventId: string,
+    message: string,
+    htmlMessage?: string,
+  ) {
+    return this.editMessageContent(roomId, eventId, {
+      msgtype: 'm.text',
+      body: message,
+      format: 'org.matrix.custom.html',
+      formatted_body: this.converter.makeHtml(htmlMessage ?? message),
+    });
+  }
+
+  public async editMessageContent(
     roomId: string,
     eventId: string,
     content: MessageContent,
-  ) {
+  ): Promise<MessageResponse> {
     await this.joinRoom(roomId);
     return new Promise((resolve) => {
       this.client?.sendEvent(
@@ -184,6 +210,7 @@ export class MatrixService {
       events?.filter(
         (e) =>
           e.getType() === 'm.room.message' &&
+          e.getContent().msgtype === 'm.text' &&
           e.getContent().body.includes(query) &&
           (!ignoreMessagesWithReplacements ||
             !ignoredEventIds.includes(e.getId())),
@@ -241,27 +268,21 @@ export class MatrixService {
           event.getRoomId(),
           eventId,
         )) as { content: MessageContent } | undefined;
-        if (!message) {
-          return;
-        }
-
         if (
+          !message ||
+          message.content.msgtype !== 'm.text' ||
           message.content.formatted_body?.includes('<del>') ||
           message.content.body.includes(postfix)
         ) {
           return;
         }
 
-        const content: MessageContent = {
-          msgtype: message.content.msgtype,
-          body: `${message.content.body}${postfix}`,
-          formatted_body: `<del>${
-            message.content.formatted_body ?? message.content.body
-          }</del>${postfix}`,
-          format: 'org.matrix.custom.html',
-        };
-
-        await this.editMessage(event.getRoomId(), eventId, content);
+        await this.editMessage(
+          event.getRoomId(),
+          eventId,
+          `${message.content.body}${postfix}`,
+          `<del>${message.content.body}</del>${postfix}`,
+        );
       });
 
       return true;

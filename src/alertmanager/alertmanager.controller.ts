@@ -12,10 +12,7 @@ import {
 import { ConfigService } from '@nestjs/config';
 import { Cache } from 'cache-manager';
 import { WINSTON_MODULE_PROVIDER } from 'nest-winston';
-import {
-  MatrixService,
-  MessageContent,
-} from 'src/matrix/matrix.service';
+import { MatrixService, MessageContent } from 'src/matrix/matrix.service';
 import striptags from 'striptags';
 import { AlertService } from './alert.service';
 import { WebhookDto } from './dtos/webhook.dto';
@@ -67,9 +64,9 @@ export class AlertManagerController {
         };
 
         if (eventId) {
-          await this.matrixService.editMessage(roomId, eventId, content);
+          await this.matrixService.editMessageContent(roomId, eventId, content);
         } else {
-          const response = await this.matrixService.sendMessage(
+          const response = await this.matrixService.sendMessageContent(
             roomId,
             content,
           );

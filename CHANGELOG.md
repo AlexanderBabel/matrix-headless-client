@@ -1,3 +1,10 @@
+## [1.2.2](https://github.com/AlexanderBabel/matrix-headless-client/compare/v1.2.1...v1.2.2) (2021-06-02)
+
+
+### Bug Fixes
+
+* **matrix:** improve message format handling ([b8913a5](https://github.com/AlexanderBabel/matrix-headless-client/commit/b8913a5824e52108a19aac53b882ab17ec5777f1))
+
 ## [1.2.1](https://github.com/AlexanderBabel/matrix-headless-client/compare/v1.2.0...v1.2.1) (2021-06-01)
 
 

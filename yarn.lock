@@ -6314,10 +6314,10 @@ node-int64@^0.4.0:
   resolved "https://registry.yarnpkg.com/node-int64/-/node-int64-0.4.0.tgz#87a9065cdb355d3182d8f94ce11188b825c68a3b"
   integrity sha1-h6kGXNs1XTGC2PlM4RGIuCXGijs=
 
-node-localstorage@^2.1.6:
-  version "2.1.6"
-  resolved "https://registry.yarnpkg.com/node-localstorage/-/node-localstorage-2.1.6.tgz#7c62120beff8abbf960c858da70fddcfc336898a"
-  integrity sha512-yE7AycE5G2hU55d+F7Ona9nx97C+enJzWWx6jrsji7fuPZFJOvuW3X/LKKAcXRBcEIJPDOKt8ZiFWFmShR/irg==
+node-localstorage@2.2.1:
+  version "2.2.1"
+  resolved "https://registry.yarnpkg.com/node-localstorage/-/node-localstorage-2.2.1.tgz#869723550a4883e426cb391d2df0b563a51c7c1c"
+  integrity sha512-vv8fJuOUCCvSPjDjBLlMqYMHob4aGjkmrkaE42/mZr0VT+ZAU10jRF8oTnX9+pgU9/vYJ8P7YT3Vd6ajkmzSCw==
   dependencies:
     write-file-atomic "^1.1.4"
 

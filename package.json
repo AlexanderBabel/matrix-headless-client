@@ -35,7 +35,7 @@
     "js-yaml": "^4.1.0",
     "matrix-js-sdk": "^11.1.0",
     "nest-winston": "^1.5.0",
-    "node-localstorage": "^2.1.6",
+    "node-localstorage": "2.2.1",
     "olm": "https://packages.matrix.org/npm/olm/olm-3.2.1.tgz",
     "passport": "^0.4.1",
     "passport-local": "^1.0.0",

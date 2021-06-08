@@ -1,3 +1,10 @@
+# [1.3.0](https://github.com/AlexanderBabel/matrix-headless-client/compare/v1.2.3...v1.3.0) (2021-06-08)
+
+
+### Features
+
+* **ha:** add /complete route ([987292f](https://github.com/AlexanderBabel/matrix-headless-client/commit/987292f6a4e1c547e56148520f029cff46cd88c9))
+
 ## [1.2.3](https://github.com/AlexanderBabel/matrix-headless-client/compare/v1.2.2...v1.2.3) (2021-06-08)
 
 

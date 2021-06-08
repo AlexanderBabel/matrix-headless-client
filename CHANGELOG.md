@@ -1,3 +1,10 @@
+## [1.2.3](https://github.com/AlexanderBabel/matrix-headless-client/compare/v1.2.2...v1.2.3) (2021-06-08)
+
+
+### Bug Fixes
+
+* **AlertManagerController:** delete eventId from cache after edit ([9fe8405](https://github.com/AlexanderBabel/matrix-headless-client/commit/9fe8405b7ea15f2c7248dee1d58b7695f7ebfcd4))
+
 ## [1.2.2](https://github.com/AlexanderBabel/matrix-headless-client/compare/v1.2.1...v1.2.2) (2021-06-02)
 
 

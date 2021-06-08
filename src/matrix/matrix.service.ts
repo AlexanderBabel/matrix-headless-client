@@ -115,6 +115,28 @@ export class MatrixService {
     this.enableReactionEdits();
   }
 
+  public async sendReaction(
+    roomId: string,
+    eventId: string,
+    emoji: string,
+  ): Promise<MessageResponse> {
+    return new Promise((resolve) => {
+      this.client?.sendEvent(
+        roomId,
+        'm.reaction',
+        {
+          'm.relates_to': {
+            rel_type: 'm.annotation',
+            event_id: eventId,
+            key: emoji,
+          },
+        },
+        undefined,
+        (_error, data) => resolve(data),
+      );
+    });
+  }
+
   public sendMessage(roomId: string, message: string, htmlMessage?: string) {
     return this.sendMessageContent(roomId, {
       msgtype: 'm.text',

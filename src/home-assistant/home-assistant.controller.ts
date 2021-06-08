@@ -94,4 +94,28 @@ export class HomeAssistantController {
 
     return { success: true };
   }
+
+  @Post('/complete')
+  async complete(
+    @Body(new ValidationPipe()) data: NotificationDto,
+    @Query('secret') secret: string,
+  ) {
+    if (!secret || this.VARS.secret !== secret) {
+      throw new UnauthorizedException();
+    }
+
+    const events = await this.matrixService.searchText(
+      data.roomId,
+      data.message,
+      true,
+    );
+
+    await Promise.all(
+      events.map(async (e) =>
+        this.matrixService.sendReaction(e.getRoomId(), e.getId(), '✅'),
+      ),
+    );
+
+    return { success: true };
+  }
 }

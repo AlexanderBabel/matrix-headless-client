@@ -65,6 +65,7 @@ export class AlertManagerController {
 
         if (eventId) {
           await this.matrixService.editMessageContent(roomId, eventId, content);
+          await this.cacheManager.del(alertCacheId);
         } else {
           const response = await this.matrixService.sendMessageContent(
             roomId,

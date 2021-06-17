@@ -1,3 +1,10 @@
+# [1.4.0](https://github.com/AlexanderBabel/matrix-headless-client/compare/v1.3.0...v1.4.0) (2021-06-17)
+
+
+### Features
+
+* **MatrixService:** add support for sending images ([993ee35](https://github.com/AlexanderBabel/matrix-headless-client/commit/993ee35e40fa84db32d95e8092f915dd72e20452))
+
 # [1.3.0](https://github.com/AlexanderBabel/matrix-headless-client/compare/v1.2.3...v1.3.0) (2021-06-08)
 
 

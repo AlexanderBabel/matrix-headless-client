@@ -47,6 +47,15 @@ export class HomeAssistantController {
       throw new UnauthorizedException();
     }
 
+    if (data.attachment) {
+      await this.matrixService.sendImage(
+        data.roomId,
+        Buffer.from(data.attachment.content, 'base64'),
+        data.attachment.contentType,
+        data.attachment.name,
+      );
+    }
+
     await this.matrixService.sendMessage(data.roomId, data.message);
     return { success: true };
   }

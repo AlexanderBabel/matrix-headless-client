@@ -1,4 +1,5 @@
-import { IsString } from 'class-validator';
+import { IsString, ValidateNested } from 'class-validator';
+import { AttachmentDto } from './attachment.dto';
 
 export class NotificationDto {
   @IsString()
@@ -6,4 +7,7 @@ export class NotificationDto {
 
   @IsString()
   message!: string;
+
+  @ValidateNested()
+  attachment?: AttachmentDto;
 }

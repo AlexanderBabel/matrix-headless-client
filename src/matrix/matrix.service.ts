@@ -137,6 +137,32 @@ export class MatrixService {
     });
   }
 
+  public async sendImage(
+    roomId: string,
+    image: Buffer,
+    contentType: string,
+    name?: string,
+  ) {
+    const res = <{ content_uri: string }>((await this.client?.uploadContent(
+      image,
+      {
+        rawResponse: false,
+        type: contentType,
+      },
+    )) as unknown);
+
+    if (!res || !res.content_uri) {
+      return false;
+    }
+
+    return this.client?.sendImageMessage(
+      roomId,
+      res.content_uri,
+      {},
+      name ?? '',
+    );
+  }
+
   public sendMessage(roomId: string, message: string, htmlMessage?: string) {
     return this.sendMessageContent(roomId, {
       msgtype: 'm.text',

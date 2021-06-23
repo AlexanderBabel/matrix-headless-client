@@ -1,3 +1,10 @@
+## [1.4.1](https://github.com/AlexanderBabel/matrix-headless-client/compare/v1.4.0...v1.4.1) (2021-06-23)
+
+
+### Bug Fixes
+
+* **main:** increase size limit to 50mb ([cbc50cb](https://github.com/AlexanderBabel/matrix-headless-client/commit/cbc50cbbadb5cbc6756fb53e8ccaa4526c2aeee9))
+
 # [1.4.0](https://github.com/AlexanderBabel/matrix-headless-client/compare/v1.3.0...v1.4.0) (2021-06-17)
 
 

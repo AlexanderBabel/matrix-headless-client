@@ -28,6 +28,7 @@
     "@nestjs/passport": "^7.1.5",
     "@nestjs/platform-express": "^7.6.15",
     "@nestjs/terminus": "^7.2.0",
+    "body-parser": "^1.19.0",
     "cache-manager": "^3.4.3",
     "class-transformer": "^0.4.0",
     "class-validator": "^0.13.1",

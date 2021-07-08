@@ -1243,10 +1243,10 @@
   resolved "https://registry.yarnpkg.com/@types/json5/-/json5-0.0.29.tgz#ee28707ae94e11d2b827bcbe5270bcea7f3e71ee"
   integrity sha1-7ihweulOEdK4J7y+UnC86n8+ce4=
 
-"@types/matrix-js-sdk@^11.0.0":
-  version "11.0.0"
-  resolved "https://registry.yarnpkg.com/@types/matrix-js-sdk/-/matrix-js-sdk-11.0.0.tgz#e6e6e48dcfc83ae9953504d1052a85e57e0fc7b5"
-  integrity sha512-u45Hs8PSao88K3S8JeA7xu8u+p9IdGmNBl0W3pvB64LU7/PDoNS+w9bP5527lutLsnYKonRFwgaBeBgVNFzO8A==
+"@types/matrix-js-sdk@11.0.1":
+  version "11.0.1"
+  resolved "https://registry.yarnpkg.com/@types/matrix-js-sdk/-/matrix-js-sdk-11.0.1.tgz#6766819b345003858e52b3ee0b8cdf6ce0447b27"
+  integrity sha512-0cI+IlIf96mxsTgtS9x7Cw2tZKhhkqwAmodKXGW+rf7THmbiM7rvOsRmp3eDik16mRlWrluq2egVFtQ8NGjgPw==
 
 "@types/mime@^1":
   version "1.3.2"
@@ -5915,10 +5915,10 @@ marked@^2.0.0:
   resolved "https://registry.yarnpkg.com/marked/-/marked-2.0.6.tgz#c3ab1403b9b70f26acd92590fc272eb1718e778c"
   integrity sha512-S2mYj0FzTQa0dLddssqwRVW4EOJOVJ355Xm2Vcbm+LU7GQRGWvwbO5K87OaPSOux2AwTSgtPPaXmc8sDPrhn2A==
 
-matrix-js-sdk@^11.1.0:
-  version "11.1.0"
-  resolved "https://registry.yarnpkg.com/matrix-js-sdk/-/matrix-js-sdk-11.1.0.tgz#59119f9fe76adbc38b309947c5532baea8499bf1"
-  integrity sha512-yBvSGb33MDz9mfbjtVGO7557kgtY/kJcrFyhtN7LwSyi/TDhhYleq5xAqsi7MJrmIb/E0JIF10JIwlF9dAW64Q==
+matrix-js-sdk@11.2.0:
+  version "11.2.0"
+  resolved "https://registry.yarnpkg.com/matrix-js-sdk/-/matrix-js-sdk-11.2.0.tgz#b49f1ebbb671f5a8ec76eec3b21eeda97f10fb31"
+  integrity sha512-YsdAQNPsvoWL3fKI2fb6evO81UKfSt+hYDkBOIylzb3AA/RtUsjtSNXcT4f6BsQIVTh6xAhEjPVoMfKORchf1Q==
   dependencies:
     "@babel/runtime" "^7.12.5"
     another-json "^0.2.0"

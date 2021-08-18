@@ -74,7 +74,7 @@ export class AlertManagerController {
 
           if (response?.event_id) {
             await this.cacheManager.set(alertCacheId, response.event_id, {
-              ttl: 604800, // 7 days ttl
+              ttl: 604_800, // 7 days ttl
             });
           }
         }

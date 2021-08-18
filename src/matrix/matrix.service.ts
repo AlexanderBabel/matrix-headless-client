@@ -9,15 +9,13 @@ import {
   MatrixEvent,
 } from 'matrix-js-sdk';
 import olm from 'olm';
-import path from 'path';
+import path from 'node:path';
 import { LocalStorage } from 'node-localstorage';
 import showdown from 'showdown';
 
-// @ts-ignore
 import { LocalStorageCryptoStore } from 'matrix-js-sdk/lib/crypto/store/localStorage-crypto-store';
 // @ts-ignore
 import { WebStorageSessionStore } from 'matrix-js-sdk/lib/store/session/webstorage';
-// @ts-ignore
 import { MemoryStore } from 'matrix-js-sdk/lib/store/memory';
 import { WINSTON_MODULE_PROVIDER } from 'nest-winston';
 import { MatrixModuleOptions } from './matrix.module.options';
@@ -91,6 +89,7 @@ export class MatrixService {
 
     const localStoragePath = path.resolve(
       path.join(
+        // eslint-disable-next-line unicorn/prefer-module
         __dirname,
         `${this.MATRIX_USER.replace('@', '').replace(':', '')}-${
           this.MATRIX_DEVICE_ID
@@ -102,8 +101,8 @@ export class MatrixService {
     setCryptoStoreFactory(() => new LocalStorageCryptoStore(localStorage));
 
     this.client = createClient({
-      // @ts-ignore
       sessionStore: new WebStorageSessionStore(localStorage),
+      // @ts-ignore
       store: new MemoryStore({ localStorage }),
       baseUrl: this.MATRIX_HOMESERVER,
       accessToken: this.MATRIX_ACCESS_TOKEN,

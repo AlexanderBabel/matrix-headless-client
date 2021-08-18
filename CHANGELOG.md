@@ -1,3 +1,10 @@
+## [1.4.2](https://github.com/AlexanderBabel/matrix-headless-client/compare/v1.4.1...v1.4.2) (2021-08-18)
+
+
+### Bug Fixes
+
+* update dependencies ([72c5aff](https://github.com/AlexanderBabel/matrix-headless-client/commit/72c5aff8e245df483cb7dda77948ee8bf54ccd8b))
+
 ## [1.4.1](https://github.com/AlexanderBabel/matrix-headless-client/compare/v1.4.0...v1.4.1) (2021-06-23)
 
 

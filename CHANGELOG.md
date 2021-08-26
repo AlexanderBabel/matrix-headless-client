@@ -1,3 +1,15 @@
+# [1.5.0](https://github.com/AlexanderBabel/matrix-headless-client/compare/v1.4.2...v1.5.0) (2021-08-26)
+
+
+### Bug Fixes
+
+* change node-prune source ([838588a](https://github.com/AlexanderBabel/matrix-headless-client/commit/838588a5c924116156effc7b7c5198fa9e78d7c5))
+
+
+### Features
+
+* add arm64 support ([a98b0d9](https://github.com/AlexanderBabel/matrix-headless-client/commit/a98b0d97407eb2629744f3eda329402313f535a4))
+
 ## [1.4.2](https://github.com/AlexanderBabel/matrix-headless-client/compare/v1.4.1...v1.4.2) (2021-08-18)
 
 

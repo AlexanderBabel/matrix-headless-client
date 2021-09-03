@@ -1,3 +1,12 @@
+## [1.5.1](https://github.com/AlexanderBabel/matrix-headless-client/compare/v1.5.0...v1.5.1) (2021-09-03)
+
+
+### Bug Fixes
+
+* **deps:** update dependency @nestjs/terminus to v8 ([f546a9e](https://github.com/AlexanderBabel/matrix-headless-client/commit/f546a9ef917573e9379a4d625411ce975f4e032e))
+* **deps:** update dependency matrix-js-sdk to v12.4.0 ([834c726](https://github.com/AlexanderBabel/matrix-headless-client/commit/834c72658f1536cdbe1f2442b0090f997ed13fd5))
+* **deps:** update dependency nest-winston to v1.6.0 ([3bb20ee](https://github.com/AlexanderBabel/matrix-headless-client/commit/3bb20ee03f02bacca79a7b4d3a2d7e247a675fdb))
+
 # [1.5.0](https://github.com/AlexanderBabel/matrix-headless-client/compare/v1.4.2...v1.5.0) (2021-08-26)
 
 

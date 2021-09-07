@@ -29,9 +29,8 @@ jobs:
         with:
           git_user_signingkey: true
           git_commit_gpgsign: true
-        env:
-          GPG_PRIVATE_KEY: ${{ secrets.GPG_PRIVATE_KEY }}
-          PASSPHRASE: ${{ secrets.GPG_PASSPHRASE }}
+          gpg_private_key: ${{ secrets.GPG_PRIVATE_KEY }}
+          passphrase: ${{ secrets.GPG_PASSPHRASE }}
 
       - name: Get yarn cache directory path
         id: yarn-cache-dir-path

@@ -1,5 +1,17 @@
 {
   "extends": [
-    "config:base"
+    "config:base",
+    ":disableRateLimiting"
+  ],
+  "prHourlyLimit": 0,
+  "packageRules": [
+    {
+      "matchUpdateTypes": ["minor", "patch"],
+      "automerge": true
+    },
+    {
+      "matchUpdateTypes": ["major"],
+      "labels": ["UPDATE-MAJOR"]
+    }
   ]
 }

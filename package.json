@@ -35,7 +35,7 @@
     "class-validator": "0.13.1",
     "dotenv": "10.0.0",
     "js-yaml": "4.1.0",
-    "matrix-js-sdk": "12.4.1",
+    "matrix-js-sdk": "12.5.0",
     "nest-winston": "1.6.0",
     "node-localstorage": "2.2.1",
     "olm": "https://packages.matrix.org/npm/olm/olm-3.2.1.tgz",

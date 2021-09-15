@@ -7,6 +7,7 @@
 name: Anchore Container Scan
 
 on:
+  workflow_dispatch:
   push:
     tags: '*'
   schedule:

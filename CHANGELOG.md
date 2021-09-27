@@ -1,3 +1,10 @@
+## [1.5.8](https://github.com/AlexanderBabel/matrix-headless-client/compare/v1.5.7...v1.5.8) (2021-09-27)
+
+
+### Bug Fixes
+
+* **Dockerfile:** define base images for specific ([f1f001a](https://github.com/AlexanderBabel/matrix-headless-client/commit/f1f001a0289b90e9c4a45e2888999050fcd812f6))
+
 ## [1.5.7](https://github.com/AlexanderBabel/matrix-headless-client/compare/v1.5.6...v1.5.7) (2021-09-24)
 
 

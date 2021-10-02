@@ -1,3 +1,10 @@
+## [1.5.12](https://github.com/AlexanderBabel/matrix-headless-client/compare/v1.5.11...v1.5.12) (2021-10-02)
+
+
+### Bug Fixes
+
+* **deps:** update dependency rxjs to v7.3.1 ([e3c1e46](https://github.com/AlexanderBabel/matrix-headless-client/commit/e3c1e46e66aeeb47e13e56757153085c4919745c))
+
 ## [1.5.11](https://github.com/AlexanderBabel/matrix-headless-client/compare/v1.5.10...v1.5.11) (2021-10-01)
 
 

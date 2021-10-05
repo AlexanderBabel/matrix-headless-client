@@ -1,3 +1,16 @@
+# [1.6.0](https://github.com/AlexanderBabel/matrix-headless-client/compare/v1.5.14...v1.6.0) (2021-10-05)
+
+
+### Bug Fixes
+
+* **AlertService:** replace all \n ([b6df624](https://github.com/AlexanderBabel/matrix-headless-client/commit/b6df6242a319868fae0087d8486583070b260f49))
+* **dep:** switch to @matrix-org/olm ([1a33597](https://github.com/AlexanderBabel/matrix-headless-client/commit/1a33597953488cfd2aaef04061959bf097ec0094))
+
+
+### Features
+
+* **MatrixService:** Add end to end encryption support ([9d56488](https://github.com/AlexanderBabel/matrix-headless-client/commit/9d5648878f5331bda1c04cf4176d091fe60bd964))
+
 ## [1.5.14](https://github.com/AlexanderBabel/matrix-headless-client/compare/v1.5.13...v1.5.14) (2021-10-05)
 
 

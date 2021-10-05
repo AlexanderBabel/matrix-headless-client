@@ -66,7 +66,7 @@ export class AlertService {
 
     // additional descriptive content
     if (data.annotations.message) {
-      parts.push(`<br>${data.annotations.message.replace('\n', '<br>')}`);
+      parts.push(`<br>${data.annotations.message.replace(/\n/g, '<br>')}`);
     }
 
     if (data.annotations.description) {

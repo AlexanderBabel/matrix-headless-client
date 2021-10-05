@@ -8,7 +8,7 @@ import {
   EventContentTypeMessage,
   MatrixEvent,
 } from 'matrix-js-sdk';
-import olm from 'olm';
+import olm from '@matrix-org/olm';
 import path from 'node:path';
 import { LocalStorage } from 'node-localstorage';
 import showdown from 'showdown';
@@ -64,6 +64,10 @@ export class MatrixService {
       `${this.options.envPrefix}MATRIX_REACTION_EDIT_POSTFIX`,
     );
 
+  private readonly MATRIX_PERSISTENCE = this.configService.get<string>(
+    `${this.options.envPrefix}MATRIX_PERSISTENCE`,
+  );
+
   private readonly client: MatrixClient | undefined;
 
   private readonly joinedRoomsCache: string[] = [];
@@ -90,7 +94,7 @@ export class MatrixService {
     const localStoragePath = path.resolve(
       path.join(
         // eslint-disable-next-line unicorn/prefer-module
-        __dirname,
+        this.MATRIX_PERSISTENCE || __dirname,
         `${this.MATRIX_USER.replace('@', '').replace(':', '')}-${
           this.MATRIX_DEVICE_ID
         }.local`,
@@ -279,8 +283,9 @@ export class MatrixService {
   }
 
   private async startClient() {
-    // await this.client?.initCrypto();
+    await this.client?.initCrypto();
     await this.client?.startClient();
+    this.markAllDevicesAsVerified();
   }
 
   private enableReactionEdits() {
@@ -336,10 +341,34 @@ export class MatrixService {
     });
   }
 
-  // private async startVerification() {
-  //   const rooms = await this.client?.getRooms();
-  //   // rooms?.map(r => r.getJoinedMembers().map(m => m.get))
-  //   // this.client?.getDevices();
-  //   // this.client?.requestVerification();
-  // }
+  private markAllDevicesAsVerified() {
+    setTimeout(async () => {
+      const rooms = this.client?.getRooms();
+
+      if (!rooms) {
+        return;
+      }
+
+      await Promise.all(
+        rooms.map(async (room) => {
+          const targetMembers = await room.getEncryptionTargetMembers();
+          const members = targetMembers.map((x) => x.userId);
+          const memberKeys = await this.client?.downloadKeys(members, false);
+          if (!memberKeys) {
+            return;
+          }
+
+          await Promise.all(
+            Object.keys(memberKeys).map((userId) =>
+              Promise.all(
+                Object.keys(memberKeys[userId]).map((deviceId) =>
+                  this.client?.setDeviceVerified(userId, deviceId),
+                ),
+              ),
+            ),
+          );
+        }),
+      );
+    }, 5000);
+  }
 }

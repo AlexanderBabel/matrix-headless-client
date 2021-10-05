@@ -22,6 +22,7 @@
     "release": "semantic-release"
   },
   "dependencies": {
+    "@matrix-org/olm": "^3.2.6",
     "@nestjs/axios": "0.0.2",
     "@nestjs/common": "8.0.10",
     "@nestjs/config": "1.0.2",
@@ -38,7 +39,6 @@
     "matrix-js-sdk": "12.5.0",
     "nest-winston": "1.6.1",
     "node-localstorage": "2.2.1",
-    "olm": "https://packages.matrix.org/npm/olm/olm-3.2.1.tgz",
     "passport": "0.5.0",
     "passport-local": "1.0.0",
     "reflect-metadata": "0.1.13",

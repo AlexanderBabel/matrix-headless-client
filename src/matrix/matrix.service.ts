@@ -3,9 +3,8 @@ import { ConfigService } from '@nestjs/config';
 import {
   MatrixClient,
   createClient,
-  // @ts-ignore
   setCryptoStoreFactory,
-  EventContentTypeMessage,
+  IContent,
   MatrixEvent,
 } from 'matrix-js-sdk';
 import olm from '@matrix-org/olm';
@@ -27,7 +26,7 @@ type MessageResponse = { event_id: string };
 export type MessageContent = {
   format?: 'org.matrix.custom.html';
   formatted_body?: string;
-} & EventContentTypeMessage;
+} & IContent;
 
 export type ReplaceEvent = {
   'm.new_content'?: MessageContent;
@@ -284,7 +283,8 @@ export class MatrixService {
 
   private async startClient() {
     await this.client?.initCrypto();
-    await this.client?.startClient();
+    await this.client?.startClient({});
+    this.client?.setGlobalErrorOnUnknownDevices(false);
     this.markAllDevicesAsVerified();
   }
 
@@ -299,32 +299,34 @@ export class MatrixService {
     const postfix = this.MATRIX_REACTION_EDIT_POSTFIX;
     this.MATRIX_REACTION_EDIT_ROOMS?.split(',').map((roomId) => {
       this.client?.on('Room.timeline', async (event: MatrixEvent) => {
+        const relation = event.getRelation();
         if (
           event.getRoomId() !== roomId ||
           event.getType() !== 'm.reaction' ||
-          !event.getRelation()
+          !relation
         ) {
           return;
         }
 
-        const { event_id: eventId, key: emoji } =
-          event.getRelation() as unknown as {
-            event_id: string;
-            key: string;
-          };
+        const { event_id: eventId, key: emoji } = relation;
         if (!eventId || emoji !== '✅') {
           return;
         }
 
-        const message = (await this.client?.fetchRoomEvent(
-          event.getRoomId(),
-          eventId,
-        )) as { content: MessageContent } | undefined;
+        const message = new MatrixEvent(
+          await this.client?.fetchRoomEvent(event.getRoomId(), eventId),
+        );
+        if (this.client?.crypto) {
+          await message.attemptDecryption(this.client.crypto);
+        }
+        const content = message.getContent();
+
         if (
           !message ||
-          message.content.msgtype !== 'm.text' ||
-          message.content.formatted_body?.includes('<del>') ||
-          message.content.body.includes(postfix)
+          !content ||
+          content.msgtype !== 'm.text' ||
+          content.formatted_body?.includes('<del>') ||
+          content.body.includes(postfix)
         ) {
           return;
         }
@@ -332,8 +334,8 @@ export class MatrixService {
         await this.editMessage(
           event.getRoomId(),
           eventId,
-          `${message.content.body}${postfix}`,
-          `<del>${message.content.body}</del>${postfix}`,
+          `${content.body}${postfix}`,
+          `<del>${content.body}</del>${postfix}`,
         );
       });
 

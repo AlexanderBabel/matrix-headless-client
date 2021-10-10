@@ -1,3 +1,10 @@
+## [1.6.3](https://github.com/AlexanderBabel/matrix-headless-client/compare/v1.6.2...v1.6.3) (2021-10-10)
+
+
+### Bug Fixes
+
+* **MatrixService:** add decryption for reactions ([a49dd3a](https://github.com/AlexanderBabel/matrix-headless-client/commit/a49dd3a1324296978c38c38bdee04c2cc90d576f))
+
 ## [1.6.2](https://github.com/AlexanderBabel/matrix-headless-client/compare/v1.6.1...v1.6.2) (2021-10-07)
 
 

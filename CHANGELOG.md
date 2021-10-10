@@ -1,3 +1,17 @@
+## [1.6.2](https://github.com/AlexanderBabel/matrix-headless-client/compare/v1.6.1...v1.6.2) (2021-10-07)
+
+
+### Bug Fixes
+
+* **deps:** update dependency rxjs to v7.4.0 ([0013486](https://github.com/AlexanderBabel/matrix-headless-client/commit/0013486d1553f6be001f4c7efa62f4d727a64555))
+
+## [1.6.1](https://github.com/AlexanderBabel/matrix-headless-client/compare/v1.6.0...v1.6.1) (2021-10-06)
+
+
+### Bug Fixes
+
+* **deps:** update nest monorepo to v8.0.11 ([692448f](https://github.com/AlexanderBabel/matrix-headless-client/commit/692448fc09219c49a05e8c0eb6b19eb2aaa1ba49))
+
 # [1.6.0](https://github.com/AlexanderBabel/matrix-headless-client/compare/v1.5.14...v1.6.0) (2021-10-05)
 
 

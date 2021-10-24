@@ -1,3 +1,10 @@
+# [1.7.0](https://github.com/AlexanderBabel/matrix-headless-client/compare/v1.6.6...v1.7.0) (2021-10-24)
+
+
+### Features
+
+* **uptime:** add new route ([cf9f574](https://github.com/AlexanderBabel/matrix-headless-client/commit/cf9f574ec95ddb3e058aff643a24f1a38ae39100))
+
 ## [1.6.6](https://github.com/AlexanderBabel/matrix-headless-client/compare/v1.6.5...v1.6.6) (2021-10-19)
 
 

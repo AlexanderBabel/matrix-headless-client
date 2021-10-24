@@ -1,3 +1,10 @@
+## [1.7.1](https://github.com/AlexanderBabel/matrix-headless-client/compare/v1.7.0...v1.7.1) (2021-10-24)
+
+
+### Bug Fixes
+
+* **AppModules:** enable UptimeModule ([dd8796d](https://github.com/AlexanderBabel/matrix-headless-client/commit/dd8796dcb19088f0f7838455bacbe257c9368495))
+
 # [1.7.0](https://github.com/AlexanderBabel/matrix-headless-client/compare/v1.6.6...v1.7.0) (2021-10-24)
 
 

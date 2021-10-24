@@ -7,6 +7,7 @@ import { AppController } from './app.controller';
 import { config } from './config';
 import { HealthCheckModule } from './health-check/health-check.module';
 import { HomeAssistantModule } from './home-assistant/home-assistant.module';
+import { UptimeModule } from './uptime/uptime.module';
 
 @Module({
   imports: [
@@ -22,6 +23,7 @@ import { HomeAssistantModule } from './home-assistant/home-assistant.module';
     HealthCheckModule,
     AlertManagerModule,
     HomeAssistantModule,
+    UptimeModule,
   ],
   controllers: [AppController],
 })

@@ -2,7 +2,7 @@
 # Builder stage.
 # This state compile our TypeScript to get the JavaScript code
 #
-FROM node:16.12.0-bullseye AS builder
+FROM node:16.13.0-bullseye AS builder
 
 WORKDIR /usr/src/app
 
@@ -21,7 +21,7 @@ RUN yarn install --production --frozen-lockfile --silent && /usr/local/bin/node-
 # This state compile get back the JavaScript code from builder stage
 # It will also install the production package only
 #
-FROM node:16.12.0-alpine3.14
+FROM node:16.13.0-alpine3.14
 
 WORKDIR /app
 

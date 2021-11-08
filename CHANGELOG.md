@@ -1,3 +1,10 @@
+## [1.7.5](https://github.com/AlexanderBabel/matrix-headless-client/compare/v1.7.4...v1.7.5) (2021-11-08)
+
+
+### Bug Fixes
+
+* **deps:** update nest monorepo to v8.2.0 ([775736b](https://github.com/AlexanderBabel/matrix-headless-client/commit/775736b9b0e35d655caad0188515fe87a0595d30))
+
 ## [1.7.4](https://github.com/AlexanderBabel/matrix-headless-client/compare/v1.7.3...v1.7.4) (2021-11-03)
 
 

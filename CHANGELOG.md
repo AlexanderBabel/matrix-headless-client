@@ -1,3 +1,10 @@
+## [1.7.6](https://github.com/AlexanderBabel/matrix-headless-client/compare/v1.7.5...v1.7.6) (2021-11-11)
+
+
+### Bug Fixes
+
+* **deps:** update dependency cache-manager to v3.5.0 ([99ff7d2](https://github.com/AlexanderBabel/matrix-headless-client/commit/99ff7d27db2d20d7e0a787e716447ca4a91a8df6))
+
 ## [1.7.5](https://github.com/AlexanderBabel/matrix-headless-client/compare/v1.7.4...v1.7.5) (2021-11-08)
 
 

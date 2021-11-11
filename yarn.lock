@@ -2327,10 +2327,10 @@ cacache@^15.0.3, cacache@^15.0.5, cacache@^15.2.0:
     tar "^6.0.2"
     unique-filename "^1.1.1"
 
-cache-manager@3.4.4:
-  version "3.4.4"
-  resolved "https://registry.yarnpkg.com/cache-manager/-/cache-manager-3.4.4.tgz#c69814763d3f3031395ae0d3a9a9296a91602226"
-  integrity sha512-oayy7ukJqNlRUYNUfQBwGOLilL0X5q7GpuaF19Yqwo6qdx49OoTZKRIF5qbbr+Ru8mlTvOpvnMvVq6vw72pOPg==
+cache-manager@3.5.0:
+  version "3.5.0"
+  resolved "https://registry.yarnpkg.com/cache-manager/-/cache-manager-3.5.0.tgz#4cc179ac49475cc8dfab45c1d41c2f548e1cd731"
+  integrity sha512-1beWBcHdHBULYupCXok4rVuEodQoHdZ86p/2nFqUiU226xf+yUt2ovGKVQN+QRA/X+2zUUpvh/twq1FeTapNDw==
   dependencies:
     async "3.2.0"
     lodash "^4.17.21"

@@ -31,7 +31,7 @@
     "@nestjs/platform-express": "8.2.0",
     "@nestjs/terminus": "8.0.1",
     "body-parser": "1.19.0",
-    "cache-manager": "3.5.0",
+    "cache-manager": "3.6.0",
     "class-transformer": "0.4.0",
     "class-validator": "0.13.1",
     "dotenv": "10.0.0",

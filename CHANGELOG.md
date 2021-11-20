@@ -1,3 +1,10 @@
+## [1.7.9](https://github.com/AlexanderBabel/matrix-headless-client/compare/v1.7.8...v1.7.9) (2021-11-20)
+
+
+### Bug Fixes
+
+* **deps:** update dependency class-validator to v0.13.2 ([5d02799](https://github.com/AlexanderBabel/matrix-headless-client/commit/5d02799ea957208257198341b169e6f86be3ab74))
+
 ## [1.7.8](https://github.com/AlexanderBabel/matrix-headless-client/compare/v1.7.7...v1.7.8) (2021-11-16)
 
 

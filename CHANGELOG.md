@@ -1,3 +1,10 @@
+## [1.7.13](https://github.com/AlexanderBabel/matrix-headless-client/compare/v1.7.12...v1.7.13) (2021-11-22)
+
+
+### Bug Fixes
+
+* **deps:** update dependency class-transformer to v0.5.1 ([1ee4e72](https://github.com/AlexanderBabel/matrix-headless-client/commit/1ee4e72341df685f39ffdffd3072874b30d3428f))
+
 ## [1.7.12](https://github.com/AlexanderBabel/matrix-headless-client/compare/v1.7.11...v1.7.12) (2021-11-22)
 
 

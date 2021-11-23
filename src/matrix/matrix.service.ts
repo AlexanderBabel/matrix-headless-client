@@ -261,7 +261,7 @@ export class MatrixService {
       : [];
 
     return (
-      events?.filter(
+      scrollbackRoom.timeline.filter(
         (e) =>
           e.getType() === 'm.room.message' &&
           e.getContent().msgtype === 'm.text' &&

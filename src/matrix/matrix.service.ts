@@ -235,9 +235,13 @@ export class MatrixService {
       return [];
     }
 
-    const events = (await this.client?.scrollback(room, limit))?.timeline;
+    const scrollbackRoom = await this.client?.scrollback(room, limit);
+    if (!scrollbackRoom) {
+      return [];
+    }
+
     const replacementEvents = ignoreMessagesWithReplacements
-      ? events?.filter((e) => {
+      ? scrollbackRoom.timeline.filter((e) => {
           const relTo = (e.getContent() as ReplaceEvent)['m.relates_to'];
           if (!relTo) {
             return false;

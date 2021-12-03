@@ -1,3 +1,10 @@
+## [1.7.18](https://github.com/AlexanderBabel/matrix-headless-client/compare/v1.7.17...v1.7.18) (2021-12-03)
+
+
+### Bug Fixes
+
+* **deps:** update dependency @nestjs/terminus to v8.0.3 ([d00e4a1](https://github.com/AlexanderBabel/matrix-headless-client/commit/d00e4a130ce25002007f6cb0c4baf6d93c651b32))
+
 ## [1.7.17](https://github.com/AlexanderBabel/matrix-headless-client/compare/v1.7.16...v1.7.17) (2021-11-29)
 
 

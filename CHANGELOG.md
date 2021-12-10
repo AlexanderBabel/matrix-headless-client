@@ -1,3 +1,10 @@
+## [1.7.20](https://github.com/AlexanderBabel/matrix-headless-client/compare/v1.7.19...v1.7.20) (2021-12-10)
+
+
+### Bug Fixes
+
+* **deps:** update dependency body-parser to v1.19.1 ([bcd563e](https://github.com/AlexanderBabel/matrix-headless-client/commit/bcd563e4704b71b4d534e157c06ec093c9eca83d))
+
 ## [1.7.19](https://github.com/AlexanderBabel/matrix-headless-client/compare/v1.7.18...v1.7.19) (2021-12-06)
 
 

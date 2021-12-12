@@ -11,6 +11,8 @@ import olm from '@matrix-org/olm';
 import path from 'node:path';
 import { LocalStorage } from 'node-localstorage';
 import showdown from 'showdown';
+import sharp from 'sharp';
+import { encode } from 'blurhash';
 
 import { LocalStorageCryptoStore } from 'matrix-js-sdk/lib/crypto/store/localStorage-crypto-store';
 // @ts-ignore
@@ -18,6 +20,7 @@ import { WebStorageSessionStore } from 'matrix-js-sdk/lib/store/session/webstora
 import { MemoryStore } from 'matrix-js-sdk/lib/store/memory';
 import { WINSTON_MODULE_PROVIDER } from 'nest-winston';
 import { MatrixModuleOptions } from './matrix.module.options';
+import { CryptoService } from './crypto.service';
 
 global.Olm = olm;
 
@@ -38,6 +41,8 @@ export type ReplaceEvent = {
 
 @Injectable()
 export class MatrixService {
+  private readonly THUMBNAIL_WIDTH = 256;
+
   private readonly MATRIX_HOMESERVER = this.configService.get<string>(
     `${this.options.envPrefix}MATRIX_HOMESERVER`,
   );
@@ -77,6 +82,7 @@ export class MatrixService {
     @Inject(WINSTON_MODULE_PROVIDER) private readonly logger: Logger,
     @Inject('CONFIG_OPTIONS') private options: MatrixModuleOptions,
     private configService: ConfigService,
+    private cryptoService: CryptoService,
   ) {
     if (
       !this.MATRIX_ACCESS_TOKEN ||
@@ -139,30 +145,91 @@ export class MatrixService {
     });
   }
 
+  private async uploadEncryptedImage(
+    image: Buffer,
+    contentType: string,
+    newWidth?: number,
+    newHeight?: number,
+  ) {
+    const { data, info } = await (newWidth && newHeight
+      ? sharp(image).resize(newWidth, newHeight)
+      : sharp(image)
+    )
+      .raw()
+      .ensureAlpha()
+      .toBuffer({ resolveWithObject: true });
+    const { height, width, size } = info;
+    const encryptedImage = await this.cryptoService.encryptAttachment(image);
+    const imageUpload = <{ content_uri: string }>(
+      ((await this.client?.uploadContent(Buffer.from(encryptedImage.data), {
+        rawResponse: false,
+        type: contentType,
+      })) as unknown)
+    );
+
+    if (!imageUpload || !imageUpload.content_uri) {
+      return false;
+    }
+
+    return {
+      file: {
+        ...encryptedImage.info,
+        url: imageUpload.content_uri,
+        mimetype: contentType,
+      },
+      info: {
+        size,
+        mimetype: contentType,
+        w: width,
+        h: height,
+        'xyz.amorgan.blurhash': encode(
+          new Uint8ClampedArray(data),
+          width,
+          height,
+          4,
+          4,
+        ),
+      },
+    };
+  }
+
   public async sendImage(
     roomId: string,
     image: Buffer,
     contentType: string,
     name?: string,
   ) {
-    const res = <{ content_uri: string }>((await this.client?.uploadContent(
-      image,
-      {
-        rawResponse: false,
-        type: contentType,
-      },
-    )) as unknown);
-
-    if (!res || !res.content_uri) {
+    const uploadedImage = await this.uploadEncryptedImage(image, contentType);
+    if (!uploadedImage) {
       return false;
     }
 
-    return this.client?.sendImageMessage(
-      roomId,
-      res.content_uri,
-      {},
-      name ?? '',
+    const factor = uploadedImage.info.w / this.THUMBNAIL_WIDTH;
+    const newWidth =
+      factor > 0 ? uploadedImage.info.w / factor : uploadedImage.info.w;
+    const newHeight =
+      factor > 0 ? uploadedImage.info.h / factor : uploadedImage.info.h;
+
+    const uploadedThumbnail = await this.uploadEncryptedImage(
+      image,
+      contentType,
+      newWidth,
+      newHeight,
     );
+    if (!uploadedThumbnail) {
+      return false;
+    }
+
+    return this.client?.sendMessage(roomId, {
+      body: name ?? '',
+      info: {
+        ...uploadedImage.info,
+        thumbnail_info: uploadedThumbnail.info,
+        thumbnail_file: uploadedThumbnail.file,
+      },
+      msgtype: 'm.image',
+      file: uploadedImage.file,
+    });
   }
 
   public sendMessage(roomId: string, message: string, htmlMessage?: string) {

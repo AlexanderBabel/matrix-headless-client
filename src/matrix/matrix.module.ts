@@ -1,5 +1,6 @@
 import { DynamicModule, Module } from '@nestjs/common';
 import { ConfigModule } from '@nestjs/config';
+import { CryptoService } from './crypto.service';
 import { MatrixModuleOptions } from './matrix.module.options';
 import { MatrixService } from './matrix.service';
 
@@ -18,6 +19,7 @@ export class MatrixModule {
           },
         },
         MatrixService,
+        CryptoService,
       ],
       exports: [MatrixService],
     };

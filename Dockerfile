@@ -2,15 +2,15 @@
 # Builder stage.
 # This state compile our TypeScript to get the JavaScript code
 #
-FROM node:16.13.0-bullseye AS builder
+FROM node:16.13.1-alpine3.14 AS builder
 
 WORKDIR /usr/src/app
 
+RUN apk add --no-cache curl bash && curl -sfL https://gobinaries.com/tj/node-prune | bash -s -- -b /usr/local/bin
+
 COPY . .
 
-RUN curl -sfL https://gobinaries.com/tj/node-prune | bash -s -- -b /usr/local/bin
-
-RUN yarn install --frozen-lockfile --silent --network-timeout 100000
+RUN yarn install --frozen-lockfile --silent --network-timeout=100000
 
 RUN yarn build
 
@@ -21,7 +21,7 @@ RUN yarn install --production --frozen-lockfile --silent && /usr/local/bin/node-
 # This state compile get back the JavaScript code from builder stage
 # It will also install the production package only
 #
-FROM node:16.13.0-alpine3.14
+FROM node:16.13.1-alpine3.14
 
 WORKDIR /app
 

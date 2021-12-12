@@ -1,3 +1,10 @@
+# [1.8.0](https://github.com/AlexanderBabel/matrix-headless-client/compare/v1.7.20...v1.8.0) (2021-12-12)
+
+
+### Features
+
+* **matrix:** add attachment encryption ([1dcf31a](https://github.com/AlexanderBabel/matrix-headless-client/commit/1dcf31a7b9f7038323f1cce003d2bd543ed8f3a2))
+
 ## [1.7.20](https://github.com/AlexanderBabel/matrix-headless-client/compare/v1.7.19...v1.7.20) (2021-12-10)
 
 

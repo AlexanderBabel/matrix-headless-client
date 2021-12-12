@@ -1,3 +1,24 @@
+## [1.7.20](https://github.com/AlexanderBabel/matrix-headless-client/compare/v1.7.19...v1.7.20) (2021-12-10)
+
+
+### Bug Fixes
+
+* **deps:** update dependency body-parser to v1.19.1 ([bcd563e](https://github.com/AlexanderBabel/matrix-headless-client/commit/bcd563e4704b71b4d534e157c06ec093c9eca83d))
+
+## [1.7.19](https://github.com/AlexanderBabel/matrix-headless-client/compare/v1.7.18...v1.7.19) (2021-12-06)
+
+
+### Bug Fixes
+
+* **deps:** update dependency matrix-js-sdk to v15.2.0 ([0bf1c89](https://github.com/AlexanderBabel/matrix-headless-client/commit/0bf1c891ca740312a70b92818a05862bffbbd0f3))
+
+## [1.7.18](https://github.com/AlexanderBabel/matrix-headless-client/compare/v1.7.17...v1.7.18) (2021-12-03)
+
+
+### Bug Fixes
+
+* **deps:** update dependency @nestjs/terminus to v8.0.3 ([d00e4a1](https://github.com/AlexanderBabel/matrix-headless-client/commit/d00e4a130ce25002007f6cb0c4baf6d93c651b32))
+
 ## [1.7.17](https://github.com/AlexanderBabel/matrix-headless-client/compare/v1.7.16...v1.7.17) (2021-11-29)
 
 

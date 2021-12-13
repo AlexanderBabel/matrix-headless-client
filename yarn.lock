@@ -1071,7 +1071,7 @@
   dependencies:
     tslib "^2.0.0"
 
-"@peculiar/webcrypto@^1.2.3":
+"@peculiar/webcrypto@1.2.3":
   version "1.2.3"
   resolved "https://registry.yarnpkg.com/@peculiar/webcrypto/-/webcrypto-1.2.3.tgz#79268ef0a8068bed2a40fc33bc68b4d3546fe2cc"
   integrity sha512-q7wDfZy3k/tpnsYB23/MyyDkjn6IdHh8w+xwoVMS5cu6CjVoFzngXDZEOOuSE4zus2yO6ciQhhHxd4XkLpwVnQ==
@@ -1471,7 +1471,7 @@
     "@types/mime" "^1"
     "@types/node" "*"
 
-"@types/sharp@^0.29.4":
+"@types/sharp@0.29.4":
   version "0.29.4"
   resolved "https://registry.yarnpkg.com/@types/sharp/-/sharp-0.29.4.tgz#e47d8677befc9944d4b9d76ed837452814166de0"
   integrity sha512-asrPef2LYenr76zBzyy+Fw40yGzq/q/CY77mUP5n43DnuWjQoOB+8vxnzFcqccz+LF+A7mbnknGCfpVWSG82Bw==
@@ -2267,7 +2267,7 @@ bl@^4.0.3, bl@^4.1.0:
     inherits "^2.0.4"
     readable-stream "^3.4.0"
 
-blurhash@^1.1.4:
+blurhash@1.1.4:
   version "1.1.4"
   resolved "https://registry.yarnpkg.com/blurhash/-/blurhash-1.1.4.tgz#a7010ceb3019cd2c9809b17c910ebf6175d29244"
   integrity sha512-MXIPz6zwYUKayju+Uidf83KhH0vodZfeRl6Ich8Gu+KGl0JgKiFq9LsfqV7cVU5fKD/AotmduZqvOfrGKOfTaA==
@@ -7712,7 +7712,7 @@ setprototypeof@1.2.0:
   resolved "https://registry.yarnpkg.com/setprototypeof/-/setprototypeof-1.2.0.tgz#66c9a24a73f9fc28cbe66b09fed3d33dcaf1b424"
   integrity sha512-E5LDX7Wrp85Kil5bhZv46j8jOeboKq5JMmYM3gVGdGH8xFpPWXUMsNrlODCrkoxMEeNi/XZIwuRvY4XNwYMJpw==
 
-sharp@^0.29.3:
+sharp@0.29.3:
   version "0.29.3"
   resolved "https://registry.yarnpkg.com/sharp/-/sharp-0.29.3.tgz#0da183d626094c974516a48fab9b3e4ba92eb5c2"
   integrity sha512-fKWUuOw77E4nhpyzCCJR1ayrttHoFHBT2U/kR/qEMRhvPEcluG4BKj324+SCO1e84+knXHwhJ1HHJGnUt4ElGA==

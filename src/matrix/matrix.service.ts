@@ -206,9 +206,13 @@ export class MatrixService {
 
     const factor = uploadedImage.info.w / this.THUMBNAIL_WIDTH;
     const newWidth =
-      factor > 0 ? uploadedImage.info.w / factor : uploadedImage.info.w;
+      factor > 0
+        ? Math.ceil(uploadedImage.info.w / factor)
+        : uploadedImage.info.w;
     const newHeight =
-      factor > 0 ? uploadedImage.info.h / factor : uploadedImage.info.h;
+      factor > 0
+        ? Math.ceil(uploadedImage.info.h / factor)
+        : uploadedImage.info.h;
 
     const uploadedThumbnail = await this.uploadEncryptedImage(
       image,

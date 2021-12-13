@@ -1,3 +1,10 @@
+## [1.8.1](https://github.com/AlexanderBabel/matrix-headless-client/compare/v1.8.0...v1.8.1) (2021-12-13)
+
+
+### Bug Fixes
+
+* **MatrixService:** ensure integer for sharp resize ([00e8c15](https://github.com/AlexanderBabel/matrix-headless-client/commit/00e8c15a9fd16f0ee524443419e1cb17a31d02c3))
+
 # [1.8.0](https://github.com/AlexanderBabel/matrix-headless-client/compare/v1.7.20...v1.8.0) (2021-12-12)
 
 

@@ -1,3 +1,10 @@
+## [1.8.4](https://github.com/AlexanderBabel/matrix-headless-client/compare/v1.8.3...v1.8.4) (2021-12-16)
+
+
+### Bug Fixes
+
+* **deps:** update dependency passport to v0.5.2 ([73d8a61](https://github.com/AlexanderBabel/matrix-headless-client/commit/73d8a61c302939af4dcaa7633b560e6ebbe3bfec))
+
 ## [1.8.3](https://github.com/AlexanderBabel/matrix-headless-client/compare/v1.8.2...v1.8.3) (2021-12-16)
 
 

@@ -1,3 +1,10 @@
+## [1.8.6](https://github.com/AlexanderBabel/matrix-headless-client/compare/v1.8.5...v1.8.6) (2021-12-20)
+
+
+### Bug Fixes
+
+* **deps:** update dependency matrix-js-sdk to v15.3.0 ([8bbd47e](https://github.com/AlexanderBabel/matrix-headless-client/commit/8bbd47e4c18b9ad7ad954407b29067cc242b51f2))
+
 ## [1.8.5](https://github.com/AlexanderBabel/matrix-headless-client/compare/v1.8.4...v1.8.5) (2021-12-17)
 
 

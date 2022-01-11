@@ -1,3 +1,10 @@
+## [1.8.13](https://github.com/AlexanderBabel/matrix-headless-client/compare/v1.8.12...v1.8.13) (2022-01-11)
+
+
+### Bug Fixes
+
+* **deps:** update dependency winston to v3.4.0 ([ba5b1aa](https://github.com/AlexanderBabel/matrix-headless-client/commit/ba5b1aa29c6f6aca36bb660f97a4313b4cfa1e7b))
+
 ## [1.8.12](https://github.com/AlexanderBabel/matrix-headless-client/compare/v1.8.11...v1.8.12) (2022-01-11)
 
 

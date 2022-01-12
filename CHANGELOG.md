@@ -1,3 +1,10 @@
+## [1.8.15](https://github.com/AlexanderBabel/matrix-headless-client/compare/v1.8.14...v1.8.15) (2022-01-12)
+
+
+### Bug Fixes
+
+* **deps:** update dependency @nestjs/passport to v8.1.0 ([1f483ff](https://github.com/AlexanderBabel/matrix-headless-client/commit/1f483ff6ccae208ae19dc831cf59748b3b1f013c))
+
 ## [1.8.14](https://github.com/AlexanderBabel/matrix-headless-client/compare/v1.8.13...v1.8.14) (2022-01-11)
 
 

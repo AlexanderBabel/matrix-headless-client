@@ -1,3 +1,10 @@
+## [1.8.20](https://github.com/AlexanderBabel/matrix-headless-client/compare/v1.8.19...v1.8.20) (2022-01-18)
+
+
+### Bug Fixes
+
+* **deps:** update dependency dotenv to v14 ([#250](https://github.com/AlexanderBabel/matrix-headless-client/issues/250)) ([9ab69cb](https://github.com/AlexanderBabel/matrix-headless-client/commit/9ab69cb9400d1408027d63beb4e9430d8dedc922))
+
 ## [1.8.19](https://github.com/AlexanderBabel/matrix-headless-client/compare/v1.8.18...v1.8.19) (2022-01-17)
 
 

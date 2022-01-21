@@ -1,3 +1,10 @@
+## [1.8.22](https://github.com/AlexanderBabel/matrix-headless-client/compare/v1.8.21...v1.8.22) (2022-01-21)
+
+
+### Bug Fixes
+
+* **deps:** update dependency @nestjs/axios to v0.0.5 ([#260](https://github.com/AlexanderBabel/matrix-headless-client/issues/260)) ([22ffbd3](https://github.com/AlexanderBabel/matrix-headless-client/commit/22ffbd3298cce8d77846c62dbb0f3f2f6f9dd033))
+
 ## [1.8.21](https://github.com/AlexanderBabel/matrix-headless-client/compare/v1.8.20...v1.8.21) (2022-01-20)
 
 

@@ -1,3 +1,10 @@
+## [1.8.25](https://github.com/AlexanderBabel/matrix-headless-client/compare/v1.8.24...v1.8.25) (2022-03-07)
+
+
+### Bug Fixes
+
+* **deps:** update dependency blurhash to v1.1.5 ([9ba2124](https://github.com/AlexanderBabel/matrix-headless-client/commit/9ba21247a89305b0790d3234542bdd24852710fb))
+
 ## [1.8.24](https://github.com/AlexanderBabel/matrix-headless-client/compare/v1.8.23...v1.8.24) (2022-01-27)
 
 

@@ -1,3 +1,10 @@
+## [1.8.29](https://github.com/AlexanderBabel/matrix-headless-client/compare/v1.8.28...v1.8.29) (2022-03-08)
+
+
+### Bug Fixes
+
+* **deps:** update dependency @nestjs/config to v1.2.0 ([b2278a6](https://github.com/AlexanderBabel/matrix-headless-client/commit/b2278a64eeb2af4087c2dc376826a7d3644cd759))
+
 ## [1.8.28](https://github.com/AlexanderBabel/matrix-headless-client/compare/v1.8.27...v1.8.28) (2022-03-08)
 
 

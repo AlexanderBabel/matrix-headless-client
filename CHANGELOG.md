@@ -1,3 +1,10 @@
+## [1.8.30](https://github.com/AlexanderBabel/matrix-headless-client/compare/v1.8.29...v1.8.30) (2022-03-09)
+
+
+### Bug Fixes
+
+* **deps:** update dependency @peculiar/webcrypto to v1.3.2 ([43f8401](https://github.com/AlexanderBabel/matrix-headless-client/commit/43f8401e2fe91c68e1feaa0e455fe51963c2abcb))
+
 ## [1.8.29](https://github.com/AlexanderBabel/matrix-headless-client/compare/v1.8.28...v1.8.29) (2022-03-08)
 
 

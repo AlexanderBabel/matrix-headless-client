@@ -41,7 +41,7 @@
     "matrix-js-sdk": "17.2.0",
     "nest-winston": "1.6.2",
     "node-localstorage": "2.2.1",
-    "passport": "0.5.3",
+    "passport": "0.6.0",
     "passport-local": "1.0.0",
     "reflect-metadata": "0.1.13",
     "rimraf": "3.0.2",

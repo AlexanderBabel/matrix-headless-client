@@ -2640,10 +2640,10 @@ cacache@^15.0.3, cacache@^15.0.5, cacache@^15.2.0:
     tar "^6.0.2"
     unique-filename "^1.1.1"
 
-cache-manager@3.6.2:
-  version "3.6.2"
-  resolved "https://registry.yarnpkg.com/cache-manager/-/cache-manager-3.6.2.tgz#79b08ec0ace3a662b6c4cbf92f570c1185d5e600"
-  integrity sha512-JEkwAFT0RmUO4C6LtqpFeEKF2d6T6ELTrosMKPGdDyv6PzZjBDTvPJcbBNFPFNbnYfD06oD1KH3qB4vs7lDBig==
+cache-manager@3.6.3:
+  version "3.6.3"
+  resolved "https://registry.yarnpkg.com/cache-manager/-/cache-manager-3.6.3.tgz#48052f3cf9ee4bac1cbb6adeedd69faf9da4ec04"
+  integrity sha512-dS4DnV6c6cQcVH5OxzIU1XZaACXwvVIiUPkFytnRmLOACuBGv3GQgRQ1RJGRRw4/9DF14ZK2RFlZu1TUgDniMg==
   dependencies:
     async "3.2.3"
     lodash.clonedeep "^4.5.0"

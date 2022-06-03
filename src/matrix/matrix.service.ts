@@ -6,6 +6,7 @@ import {
   setCryptoStoreFactory,
   IContent,
   MatrixEvent,
+  RoomEvent,
 } from 'matrix-js-sdk';
 import olm from '@matrix-org/olm';
 import path from 'node:path';
@@ -373,10 +374,11 @@ export class MatrixService {
 
     const postfix = this.MATRIX_REACTION_EDIT_POSTFIX;
     this.MATRIX_REACTION_EDIT_ROOMS?.split(',').map((roomId) => {
-      this.client?.on('Room.timeline', async (event: MatrixEvent) => {
+      this.client?.on(RoomEvent.Timeline, async (event: MatrixEvent) => {
         const relation = event.getRelation();
+        const eventRoomId = event.getRoomId();
         if (
-          event.getRoomId() !== roomId ||
+          eventRoomId !== roomId ||
           event.getType() !== 'm.reaction' ||
           !relation
         ) {
@@ -389,7 +391,7 @@ export class MatrixService {
         }
 
         const message = new MatrixEvent(
-          await this.client?.fetchRoomEvent(event.getRoomId(), eventId),
+          await this.client?.fetchRoomEvent(eventRoomId, eventId),
         );
         if (this.client?.crypto) {
           await message.attemptDecryption(this.client.crypto);
@@ -407,7 +409,7 @@ export class MatrixService {
         }
 
         await this.editMessage(
-          event.getRoomId(),
+          eventRoomId,
           eventId,
           `${content.body}${postfix}`,
           `<del>${content.body}</del>${postfix}`,

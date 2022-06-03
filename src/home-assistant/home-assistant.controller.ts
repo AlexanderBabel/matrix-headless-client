@@ -78,13 +78,14 @@ export class HomeAssistantController {
     const res = await Promise.all(
       events.map(async (e) => {
         const content = e.getContent() as MessageContent;
-        if (content.formatted_body?.includes('<del>')) {
+        const roomId = e.getRoomId();
+        if (!roomId || content.formatted_body?.includes('<del>')) {
           return false;
         }
 
         const shortBody = content.body.split('\n')[0];
         await this.matrixService.editMessage(
-          e.getRoomId(),
+          roomId,
           e.getId(),
           `${shortBody}${this.VARS.chore.completedPostfix}`,
           `<del>${shortBody}</del>${this.VARS.chore.completedPostfix}`,
@@ -93,7 +94,7 @@ export class HomeAssistantController {
       }),
     );
 
-    const messageUpdateHappened = res.find((e) => e);
+    const messageUpdateHappened = res.find((e) => !!e);
     if (!messageUpdateHappened && this.VARS.chore.completedFallbackMessage) {
       await this.matrixService.sendMessage(
         data.roomId,
@@ -120,9 +121,14 @@ export class HomeAssistantController {
     );
 
     await Promise.all(
-      events.map(async (e) =>
-        this.matrixService.sendReaction(e.getRoomId(), e.getId(), '✅'),
-      ),
+      events.map(async (e) => {
+        const roomId = e.getRoomId();
+        if (!roomId) {
+          return undefined;
+        }
+
+        return this.matrixService.sendReaction(roomId, e.getId(), '✅');
+      }),
     );
 
     return { success: true };

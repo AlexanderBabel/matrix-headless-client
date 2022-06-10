@@ -1,3 +1,10 @@
+## [1.8.34](https://github.com/AlexanderBabel/matrix-headless-client/compare/v1.8.33...v1.8.34) (2022-06-10)
+
+
+### Bug Fixes
+
+* update libolm ([10e1bec](https://github.com/AlexanderBabel/matrix-headless-client/commit/10e1bec571d45aac44cdd94c8a23ff75d40b5973))
+
 ## [1.8.33](https://github.com/AlexanderBabel/matrix-headless-client/compare/v1.8.32...v1.8.33) (2022-06-07)
 
 

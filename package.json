@@ -80,7 +80,7 @@
     "eslint-plugin-promise": "6.0.0",
     "eslint-plugin-unicorn": "42.0.0",
     "jest": "28.1.1",
-    "prettier": "2.7.0",
+    "prettier": "2.7.1",
     "semantic-release": "19.0.3",
     "supertest": "6.2.3",
     "ts-jest": "28.0.5",

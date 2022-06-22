@@ -1,3 +1,10 @@
+## [1.8.37](https://github.com/AlexanderBabel/matrix-headless-client/compare/v1.8.36...v1.8.37) (2022-06-22)
+
+
+### Bug Fixes
+
+* **deps:** update dependency sharp to v0.30.7 ([899d8db](https://github.com/AlexanderBabel/matrix-headless-client/commit/899d8db9cf2ffc4e608a79ac7675c6edb10a6c73))
+
 ## [1.8.36](https://github.com/AlexanderBabel/matrix-headless-client/compare/v1.8.35...v1.8.36) (2022-06-19)
 
 

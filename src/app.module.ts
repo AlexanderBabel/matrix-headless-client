@@ -6,8 +6,8 @@ import { AlertManagerModule } from './alertmanager/alertmanager.module';
 import { AppController } from './app.controller';
 import { config } from './config';
 import { HealthCheckModule } from './health-check/health-check.module';
-import { HomeAssistantModule } from './home-assistant/home-assistant.module';
-import { UptimeModule } from './uptime/uptime.module';
+// import { HomeAssistantModule } from './home-assistant/home-assistant.module';
+// import { UptimeModule } from './uptime/uptime.module';
 
 @Module({
   imports: [
@@ -22,8 +22,8 @@ import { UptimeModule } from './uptime/uptime.module';
     }),
     HealthCheckModule,
     AlertManagerModule,
-    HomeAssistantModule,
-    UptimeModule,
+    // HomeAssistantModule,
+    // UptimeModule,
   ],
   controllers: [AppController],
 })

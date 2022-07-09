@@ -12,10 +12,9 @@ import {
 import { ConfigService } from '@nestjs/config';
 import { Cache } from 'cache-manager';
 import { WINSTON_MODULE_PROVIDER } from 'nest-winston';
-import { MatrixService, MessageContent } from 'src/matrix/matrix.service';
-import striptags from 'striptags';
 import { AlertService } from './alert.service';
 import { WebhookDto } from './dtos/webhook.dto';
+import { PushService } from './push.service';
 
 const ALERTMANAGER_CACHE_PREFIX = 'am-event-id-';
 
@@ -30,7 +29,7 @@ export class AlertManagerController {
     @Inject(WINSTON_MODULE_PROVIDER) private readonly logger: Logger,
     private configService: ConfigService,
     private alertService: AlertService,
-    private matrixService: MatrixService,
+    private pushService: PushService,
   ) {}
 
   @Post()
@@ -56,27 +55,23 @@ export class AlertManagerController {
         const message = this.alertService.formatAlert(alert);
         const eventId = await this.cacheManager.get<string>(alertCacheId);
 
-        const content: MessageContent = {
-          msgtype: 'm.text',
-          body: striptags(message),
-          format: 'org.matrix.custom.html',
-          formatted_body: message,
-        };
-
         if (eventId) {
-          await this.matrixService.editMessageContent(roomId, eventId, content);
-          await this.cacheManager.del(alertCacheId);
-        } else {
-          const response = await this.matrixService.sendMessageContent(
-            roomId,
-            content,
-          );
+          // edit previous message
+          await this.pushService.sendPush(roomId, message, eventId);
 
-          if (response?.event_id) {
-            await this.cacheManager.set(alertCacheId, response.event_id, {
-              ttl: 604_800, // 7 days ttl
-            });
+          // only delete cache entry if the alert has been resolved
+          // an alert could be fired multiple times (e.g. it will be send a second time after 6 hours by default)
+          if (alert.status === 'resolved') {
+            await this.cacheManager.del(alertCacheId);
           }
+          return;
+        }
+
+        const response = await this.pushService.sendPush(roomId, message);
+        if (response?.data?.event_id) {
+          await this.cacheManager.set(alertCacheId, response.data.event_id, {
+            ttl: 604_800, // 7 days ttl
+          });
         }
       }),
     );

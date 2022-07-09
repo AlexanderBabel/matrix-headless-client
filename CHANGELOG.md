@@ -1,3 +1,10 @@
+# [1.9.0](https://github.com/AlexanderBabel/matrix-headless-client/compare/v1.8.43...v1.9.0) (2022-07-09)
+
+
+### Features
+
+* add support for external push service ([05e15b2](https://github.com/AlexanderBabel/matrix-headless-client/commit/05e15b27fa09817530976867d60efb438bec8a65))
+
 ## [1.8.43](https://github.com/AlexanderBabel/matrix-headless-client/compare/v1.8.42...v1.8.43) (2022-07-08)
 
 

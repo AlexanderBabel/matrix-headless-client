@@ -1,3 +1,10 @@
+## [1.9.2](https://github.com/AlexanderBabel/matrix-headless-client/compare/v1.9.1...v1.9.2) (2022-07-12)
+
+
+### Bug Fixes
+
+* **deps:** update dependency nest-winston to v1.6.3 ([99c374f](https://github.com/AlexanderBabel/matrix-headless-client/commit/99c374fd039980583b95aeae8e020bcb3946dfb9))
+
 ## [1.9.1](https://github.com/AlexanderBabel/matrix-headless-client/compare/v1.9.0...v1.9.1) (2022-07-11)
 
 

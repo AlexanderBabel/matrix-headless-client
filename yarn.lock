@@ -2522,7 +2522,7 @@ chalk@^4.0.0, chalk@^4.1.0, chalk@^4.1.1, chalk@^4.1.2:
     ansi-styles "^4.1.0"
     supports-color "^7.1.0"
 
-chalk@^5.0.0, chalk@^5.0.1:
+chalk@^5.0.0:
   version "5.0.1"
   resolved "https://registry.yarnpkg.com/chalk/-/chalk-5.0.1.tgz#ca57d71e82bb534a296df63bbacc4a1c22b2a4b6"
   integrity sha512-Fo07WOYGqMfCWHOzSXOt2CxDbC6skS/jO9ynEcmpANMoPrD+W1r1K6Vx7iNm+AQmETU1Xr2t+n8nzkV9t6xh3w==
@@ -5918,12 +5918,11 @@ nerf-dart@^1.0.0:
   resolved "https://registry.yarnpkg.com/nerf-dart/-/nerf-dart-1.0.0.tgz#e6dab7febf5ad816ea81cf5c629c5a0ebde72c1a"
   integrity sha512-EZSPZB70jiVsivaBLYDCyntd5eH8NTSMOn3rB+HxwdmKThGELLdYv8qVIMWvZEFy9w8ZZpW9h9OB32l1rGtj7g==
 
-nest-winston@1.6.3:
-  version "1.6.3"
-  resolved "https://registry.yarnpkg.com/nest-winston/-/nest-winston-1.6.3.tgz#c655ec714e078eca19249e7d23c342424b32757c"
-  integrity sha512-O/yfoLncj0rj5ArtHi91XRARSNlAbht/G1tZD1qccOJXR/+mC2Vrj0+ejmuewM6+E3hWxceWDp6id0z6hcML2g==
+nest-winston@1.7.0:
+  version "1.7.0"
+  resolved "https://registry.yarnpkg.com/nest-winston/-/nest-winston-1.7.0.tgz#92fd415d42c882e1d07201fb962140e5ba291c4c"
+  integrity sha512-FJ94dJ++8BEjQfK5TuqiY5g7pP48RLRss41Bm6bCCfzYgywymEI6m+HPHW9K/q2i7wO5TU6Sva51/Rvmmhxddw==
   dependencies:
-    chalk "^5.0.1"
     fast-safe-stringify "^2.1.1"
 
 node-abi@^3.3.0:

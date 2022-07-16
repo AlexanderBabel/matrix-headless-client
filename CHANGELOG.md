@@ -1,3 +1,10 @@
+## [1.9.4](https://github.com/AlexanderBabel/matrix-headless-client/compare/v1.9.3...v1.9.4) (2022-07-16)
+
+
+### Bug Fixes
+
+* **deps:** pin dependency axios to 0.27.2 ([#472](https://github.com/AlexanderBabel/matrix-headless-client/issues/472)) ([988eace](https://github.com/AlexanderBabel/matrix-headless-client/commit/988eace9c6ddb9a3d8ad5ae6598d4743a40c19cf))
+
 ## [1.9.3](https://github.com/AlexanderBabel/matrix-headless-client/compare/v1.9.2...v1.9.3) (2022-07-12)
 
 

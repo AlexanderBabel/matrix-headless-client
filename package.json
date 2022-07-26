@@ -39,7 +39,7 @@
     "class-validator": "0.13.2",
     "dotenv": "16.0.1",
     "js-yaml": "4.1.0",
-    "matrix-js-sdk": "18.1.0",
+    "matrix-js-sdk": "19.1.0",
     "nest-winston": "1.7.0",
     "node-localstorage": "2.2.1",
     "passport": "0.6.0",
